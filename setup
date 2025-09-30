@@ -1,0 +1,64 @@
+Requirements for the script to work
+
+Python 3 installed.
+Valid input files:
+DNA sequence file: Contains only A, C, G, T characters (other characters are ignored).
+Restriction enzyme file: Each line is in the format:
+EnzymeName,RecognitionSequence
+or
+EnzymeName<TAB>RecognitionSequence
+(Lines can be comma- or tab-separated. Comments and malformed lines are skipped.)
+
+What it does
+
+Reads the DNA sequence from a file.
+Reads restriction enzyme names and their recognition sequences from a file.
+Finds all cut sites for each enzyme.
+Reports:
+Which enzyme cuts at which position.
+Number of fragments.
+Fragment lengths (in base pairs).
+
+How to run
+
+Assuming you have named the script restriction_digest.py, your DNA sequence is in dna.txt, and your enzyme list is in enzymes.txt:
+python restriction_digest.py dna.txt enzymes.txt
+
+
+Sample Input Files
+
+dna.txt
+ACGTGATCGATCGATCGATCGGAATTCCGATCGATGCGTACGATCGATCGATCGATCG
+
+enzymes.txt
+EcoRI,GAATTC
+BamHI,GGATCC
+DpnI,GATC
+
+Sample Output
+
+--- Digest Results ---
+Original DNA length: 56 bp
+Cut sites:
+  DpnI: position 5
+  DpnI: position 9
+  DpnI: position 13
+  DpnI: position 17
+  EcoRI: position 22
+  DpnI: position 29
+  DpnI: position 34
+  DpnI: position 38
+  DpnI: position 42
+Number of fragments: 10
+Fragment lengths (bp): [5, 4, 4, 4, 5, 7, 5, 4, 4, 8]
+----------------------
+
+
+
+
+
+This Python script performs an **in silico restriction digest** of a DNA sequence using a list of
+specified restriction enzymes.By analyzing the input DNA and enzyme recognition sites, it simulates 
+the cutting process and reports the resulting fragment sizes. This tool is useful for molecular 
+biology experiments, cloning design, and educational purposes, enabling users to quickly predict 
+fragment patterns without performing laboratory procedures.
